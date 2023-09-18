@@ -17,8 +17,8 @@ namespace TTSWebApi {
 				return new DefaultBackgroundTaskQueue(queueCapacity);
 			});
 
-			// builder.Services.AddSingleton<ITTSService, TTSService>();
-			builder.Services.AddScoped<ITTSService, TTSService>();
+			builder.Services.AddSingleton<ITTSService, TTSService>();
+			// builder.Services.AddScoped<ITTSService, TTSService>();
 			// builder.Services.AddTransient<ITTSService, TTSService>();
 
 			var app = builder.Build();

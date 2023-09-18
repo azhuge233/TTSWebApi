@@ -26,7 +26,7 @@ namespace TTSWebApi.Services {
 			}
 
 			_logger.LogDebug("Get string: {text}", text);
-			await Task.Run(() => Synthesizer.Speak(text));
+			await Task.Run(() => Synthesizer.SpeakAsync(text));
 			_logger.LogDebug("End: {text}", text);
 			return 0;
 		}

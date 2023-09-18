@@ -18,30 +18,28 @@ namespace TTSWebApi.Controllers {
 
 		[HttpGet("play")]
 		public async Task<IActionResult> Play([FromQuery(Name = "text")] string str) {
-			int result = 0;
-			// result = await _tts.Speak(str);
-			await _backgroundTaskQueue.QueueBackgroundWorkItemAsync(async (token) => {
-				result = await _tts.Speak(str);
-			});
+			int result = await _tts.Speak(str);
+			//await _backgroundTaskQueue.QueueBackgroundWorkItemAsync(async (token) => {
+			//	result = await _tts.Speak(str);
+			//});
 			return result == -1 ? BadRequest() : Ok();
 		}
 
 		[HttpPost("play")]
 		public async Task<IActionResult> PlayPost([FromBody] string str) {
-			int result = 0;
-			// result = await _tts.Speak(str);
-			await _backgroundTaskQueue.QueueBackgroundWorkItemAsync(async (token) => {
-				result = await _tts.Speak(str);
-			});
+			int result = await _tts.Speak(str);
+			//await _backgroundTaskQueue.QueueBackgroundWorkItemAsync(async (token) => {
+			//	result = await _tts.Speak(str);
+			//});
 			return result == -1 ? BadRequest() : Ok();
 		}
 
 		[HttpGet("cancel")]
 		public async Task<IActionResult> Cancel() {
-			int result = 0;
-			await _backgroundTaskQueue.QueueBackgroundWorkItemAsync(async (token) => {
-				result = await _tts.Cancel();
-			});
+			int result = await _tts.Cancel();
+			//await _backgroundTaskQueue.QueueBackgroundWorkItemAsync(async (token) => {
+			//	result = await _tts.Cancel();
+			//});
 			return result == -1 ? BadRequest() : Ok();
 		}
 	}
