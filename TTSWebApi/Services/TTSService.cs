@@ -25,14 +25,15 @@ namespace TTSWebApi.Services {
 				return -1;
 			}
 
-			_logger.LogDebug("Get string: {text}", text);
+			_logger.LogInformation("Get string: {text}", text);
 			await Task.Run(() => Synthesizer.SpeakAsync(text));
-			_logger.LogDebug("End: {text}", text);
+			_logger.LogInformation("End: {text}", text);
 			return 0;
 		}
 
 		public async Task<int> Cancel() {
 			try {
+				_logger.LogInformation("Cancel");
 				await Task.Run(Synthesizer.SpeakAsyncCancelAll);
 				return 0;
 			} catch {
